@@ -28,9 +28,17 @@ class DicePage extends StatefulWidget {
 
 class _DicePageState extends State<DicePage> {
   static final randomDiceNumber  = new Random();
-  int leftDiceNumber  = randomDiceNumber.nextInt(6) + 1;
-  int rightDiceNumber = randomDiceNumber.nextInt(6) + 1;
+  int leftDiceNumber;
+  int rightDiceNumber;
 
+  _DicePageState() {
+    rollDice();
+  }
+  void rollDice() {
+
+     leftDiceNumber  = randomDiceNumber.nextInt(6) + 1;
+     rightDiceNumber = randomDiceNumber.nextInt(6) + 1;
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -46,7 +54,7 @@ class _DicePageState extends State<DicePage> {
 
 
                 setState(() {
-                  leftDiceNumber = randomDiceNumber.nextInt(6) + 1;
+                  rollDice();
                 });
 
                 print('left dice pressed');
@@ -59,7 +67,7 @@ class _DicePageState extends State<DicePage> {
                 onPressed: ()  {
 
                   setState(() {
-                    rightDiceNumber = randomDiceNumber.nextInt(6) + 1;
+                    rollDice();
                   });
 
                   print("right dice pressed");
